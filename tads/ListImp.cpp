@@ -18,26 +18,6 @@ private:
         Node(T element, Node *next, Node *previous) : element(element), next(next), previous(previous) {}
     };
 
-    // implement an iterator for the list
-    class ListIterator : public Iterator<T>
-    {
-    private:
-        Node *current;
-
-    public:
-        ListIterator(Node *current) : current(current) {}
-        bool hasNext()
-        {
-            return current != NULL;
-        }
-        T next()
-        {
-            T element = current->element;
-            current = current->next;
-            return element;
-        }
-    };
-
     Node *head;
     Node *tail;
     int size;
@@ -181,11 +161,6 @@ public:
     int getSize()
     {
         return size;
-    }
-
-    Iterator<T> *getIterator()
-    {
-        return new ListIterator(this->head);
     }
 };
 
